@@ -1,4 +1,4 @@
-Paywall Remover
+## Paywall Remover
 
 Breeze past those pesky paywalls and access content seamlessly. Introducing the Paywall Remover: a tool designed to unlock content by redirecting you through an archive service. Free your information in a snap! 🚀
 
