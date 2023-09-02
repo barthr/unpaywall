@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paywall Remover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body
+    class="bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 flex items-center justify-center h-screen p-4 sm:p-0 font-sans">
+
+    <div class="text-center w-full max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-2xl bg-opacity-90 backdrop-blur-md">
+        <p class="text-2xl mb-2 font-semibold text-purple-700">🚀 Unlock Your Content!</p>
+        <p class="text-base font-semibold mb-6 text-gray-600">Simply paste the website URL below, and we'll break down
+            those pesky
+            paywalls for you. Free your information!</p>
+        <form onsubmit="redirectToArchive(); return false;">
+            <input type="url" id="websiteUrl" placeholder="Paste the website URL here" required
+                class="w-full shadow-md appearance-none border border-purple-300 bg-opacity-80 bg-clip-padding backdrop-blur-md rounded-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4 transition duration-300 ease-in-out">
+            <button type="submit"
+                class="w-full bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">Remove
+                Paywall</button>
+        </form>
+    </div>
+
+
+    <script>
+        function redirectToArchive(inputValue) {
+            const site = inputValue ?? document.getElementById("websiteUrl").value;
+            if (!site) {
+                return;
+            }
+            window.location.href = `https://archive.today?run=1&url=${encodeURIComponent(site)}`;
+        }
+
+        // Extract URL from path parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryURL = urlParams.get('url');
+
+        if (queryURL && isValidURL(queryURL)) {
+            redirectToArchive(queryURL);
+        }
+
+        function isValidURL(str) {
+            try {
+                new URL(str);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
